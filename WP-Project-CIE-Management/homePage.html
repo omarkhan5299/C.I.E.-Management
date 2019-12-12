@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CIE Evaluation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="561920612840-8gukjsvmtg107b3ecdmdth9m1gmokbgu.apps.googleusercontent.com">
+
+<script>
+  function signOut(googleUser) {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+	  location.replace("http://localhost:8080/My%20Programs/Web%20Programming%20Project/redirect/login.html");
+    });
+  }
+
+
+</script>
+
+
+</head>
+
+<style>
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("Mushrooms.jpg");
+    min-height: 85%;
+}
+.menu {
+    display: none;
+}
+</style>
+<body>  
+
+
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+	  <a onclick="signOut()" class="w3-button w3-block w3-black">Log Out</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">UPLOAD</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black">DOWNLOAD</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:50px">CIE<br>Management System</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE SITE</span></h5>
+    <p>CIE Eligibilty Evaluation</p>
+    <p>The CIE Evaluation application has been developed to help automate the process of evalutaing the eligibilty of students for writing the Semester End Examination. The appication allows the user to upload an excel sheet which contains information about the marks and attendance of the student. The application extracts data from the uploaded excel file into our database and automates the process of evaluation. The evaluated results are further written into a formatted excel sheet which can be downloaded by the user. Our application aims to reduce dependance on paper for official use and saves time.</p>
+	<p>The uploaded excel sheet should be in the following synatx:</p>
+	<p>S.No.	|	USN		|		Name	|	Marks	|	Attendance	</p>
+	<p>Data should be entered from second row onwards.</p>
+  </div>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">UPLOAD</span></h5>
+	
+	<div class="call-to-action">
+	  
+	  	<form method='post' enctype='multipart/form-data' action='uploadToDatabase.php'>
+		<input type='file' name='excel' 
+		style="position:relative;
+			left:100px;background-color: black; 
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 8px;">
+		<br>
+		<button type='submit' 
+		style="position:relative;
+			left:100px;background-color: black; 
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 8px;">Submit</button>
+		</form>
+		
+		<br/>
+		
+	</form>
+	
+	</div>
+  </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">DOWNLOAD</span></h5>
+	
+	<div class="call-to-action">
+
+	  <form action='downloadFromDatabase.php'>
+		<button type='submit' 
+			style="position:relative;
+			left:100px;background-color: black; 
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 8px;">DOWNLOAD</button>
+	  </form>
+	  <br>
+	
+	</div>
+	
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<div class="g-signin2" data-onsuccess="onSignIn" visible:hidden >
+
+</body>
+</html>
